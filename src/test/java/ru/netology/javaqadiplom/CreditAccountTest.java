@@ -104,7 +104,7 @@ public class CreditAccountTest {
     }
     @Test
     public void createAccountWithNegativeCreditLimit () {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {CreditAccount account = new CreditAccount(10, -0,10);} );
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {CreditAccount account = new CreditAccount(10, -5000,10);} );
     }
 
 
