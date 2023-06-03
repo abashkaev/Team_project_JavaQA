@@ -99,7 +99,7 @@ public class SavingAccount extends Account {
             return false;
         }
         if (balance + amount < maxBalance) {
-            balance = amount;
+            balance = amount + balance;
             return true;
         } else {
             return false;
