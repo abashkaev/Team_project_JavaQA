@@ -12,7 +12,7 @@ public class Account {
         return false;
     }
 
-    public int yearChange() {
+    public int yearChange(boolean isChangeInYear) {
         return 0;
     }
 
