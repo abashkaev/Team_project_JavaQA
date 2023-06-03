@@ -31,11 +31,6 @@ public class SavingAccount extends Account {
                     "Максимальный баланс не может быть отрицательным, а у вас: " + maxBalance
             );
         }
-        if (initialBalance < 0) {
-            throw new IllegalArgumentException(
-                    "Начальный баланс не может быть отрицательным, а у вас: " + initialBalance
-            );
-        }
         if (minBalance < 0) {
             throw new IllegalArgumentException(
                     "Минимальный баланс баланс не может быть отрицательным, а у вас: " + minBalance
@@ -51,7 +46,16 @@ public class SavingAccount extends Account {
                     "Некорректные данные, максимальный баланс("+ maxBalance +") не может быть меньше минимального (" + minBalance +")"
             );
         }
-
+        if (initialBalance < minBalance) {
+            throw new IllegalArgumentException(
+                    "Начальный баланс не может быть меньше минимального баланса (" + minBalance + "), а у вас: " + initialBalance
+            );
+        }
+        if (initialBalance > maxBalance) {
+            throw new IllegalArgumentException(
+                    "Начальный баланс не может быть больше максимального баланса (" + maxBalance + "), а у вас: " + initialBalance
+            );
+        }
         this.balance = initialBalance;
         this.minBalance = minBalance;
         this.maxBalance = maxBalance;
