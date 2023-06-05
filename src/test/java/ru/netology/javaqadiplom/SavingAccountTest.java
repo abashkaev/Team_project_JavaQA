@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class SavingAccountTest {
 
     @Test
-    public void shouldTestWhenRateLess0() { //накопительная ставка отрецательная
+    public void shouldTestWhenRateLess0() { //накопительная ставка не может быть отрецательная
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> {
                     SavingAccount account = new SavingAccount(
@@ -16,7 +16,7 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void shouldTestMinBalanceMoreMaxBalance() { //мин баланс больше макс.
+    public void shouldTestMinBalanceMoreMaxBalance() { //мин баланс  не может быть больше макс.
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> {
                     SavingAccount account = new SavingAccount(
@@ -25,7 +25,43 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void shouldTestInitialBalanceLess0() { //начальный баланс меньше 0
+    public void shouldTestMaxBalanceLess0() { //макс. баланс не может быть меньше нуля
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> {
+                    SavingAccount account = new SavingAccount(
+                            1_000, 1_000, -1_000, 15);
+                });
+    }
+
+    @Test
+    public void shouldTestMinBalanceLess0() { //мин. баланс не может быть меньше нуля
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> {
+                    SavingAccount account = new SavingAccount(
+                            1_000, -10_000, 1_000, 15);
+                });
+    }
+
+    @Test
+    public void shouldTestInitialBalanceLessMinBalance() { //нач. баланс не может быть меньше минимального
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> {
+                    SavingAccount account = new SavingAccount(
+                            1_000, 2_000, 10_000, 15);
+                });
+    }
+
+    @Test
+    public void shouldTestInitialBalanceMoreMaxBalance() { //нач. баланс не может быть больше максимального
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> {
+                    SavingAccount account = new SavingAccount(
+                            11_000, 2_000, 10_000, 15);
+                });
+    }
+
+    @Test
+    public void shouldTestInitialBalanceLess0() { //начальный баланс не может быть меньше 0
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> {
                     SavingAccount account = new SavingAccount(
@@ -127,43 +163,43 @@ public class SavingAccountTest {
     @Test
     public void shouldTestWhenAmountLess0() { //когда сумма покупки отрецательная
         SavingAccount savingAccount = new SavingAccount(
-                200,
+                2_000,
                 1_000,
                 10_000,
                 5
         );
         savingAccount.pay(-300);
-        int expected = (200);
+        int expected = (2_000);
         int actual = savingAccount.getBalance();
         Assertions.assertEquals(expected, actual);
 
     }
 
-//    @Test
-//    public void shouldTestWhenBalanceNotChange() {// расчет % на остаток если счет не менялся
-//        SavingAccount savingAccount = new SavingAccount(
-//                200,
-//                200,
-//                10_000,
-//                15
-//        );
-//        savingAccount.yearChange();
-//        int expected = (30);
-//        int actual = savingAccount.getBalance();
-//        Assertions.assertEquals(expected, actual);
-//    }
-//
-//    @Test
-//    public void shouldTestWhenBalanceChange() { //расчет % на остаток если счет менялся
-//        SavingAccount savingAccount = new SavingAccount(
-//                3_000,
-//                2_000,
-//                10_000,
-//                15
-//        );
-//        savingAccount.yearChange();
-//        int expected = (0);
-//        int actual = savingAccount.getBalance();
-//        Assertions.assertEquals(expected, actual);
-//    }
+    @Test
+    public void shouldTestWhenBalanceNotChange() {// расчет % на остаток если счет не менялся
+        SavingAccount savingAccount = new SavingAccount(
+                200,
+                200,
+                10_000,
+                15
+        );
+        savingAccount.yearChange(false);
+        int expected = 30;
+        int actual = savingAccount.yearChange(false);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldTestWhenBalanceChange() { //расчет % на остаток если счет менялся
+        SavingAccount savingAccount = new SavingAccount(
+                3_000,
+                2_000,
+                10_000,
+                15
+        );
+        savingAccount.yearChange(true);
+        int expected = (0);
+        int actual = savingAccount.yearChange(true);
+        Assertions.assertEquals(expected, actual);
+    }
 }

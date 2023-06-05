@@ -83,12 +83,12 @@ public class CreditAccount extends Account {
      *
      * @return
      */
-    @Override
-    public int yearChange() {
-        return balance / 100 * rate;
-    }
-
-    public int getCreditLimit() {
-        return creditLimit;
-    }
+//    @Override
+//    public int yearChange() {
+//        return balance / 100 * rate;
+//    }
+//
+//    public int getCreditLimit() {
+//        return creditLimit;
+//    }
 }
