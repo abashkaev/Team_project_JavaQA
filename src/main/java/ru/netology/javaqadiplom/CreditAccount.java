@@ -102,7 +102,7 @@ public class CreditAccount extends Account {
     public int yearChange(boolean isChangeInYear) {
         if (balance > 0) {
             return 0;
-        } else if (isChangeInYear) {
+        } else if (!isChangeInYear) {
             return balance / 100 * rate;
         }
         return 0;
