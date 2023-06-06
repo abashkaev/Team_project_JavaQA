@@ -120,7 +120,5 @@ public class CreditAccountTest {
             CreditAccount account = new CreditAccount(10, -6000, 10);
         });
     }
-
-
 }
 

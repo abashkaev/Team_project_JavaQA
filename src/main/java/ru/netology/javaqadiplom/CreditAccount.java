@@ -1,5 +1,6 @@
 package ru.netology.javaqadiplom;
 
+
 /**
  * Кредитный счёт
  * Может иметь баланс вплоть до отрицательного, но до указанного кредитного лимита.
@@ -24,16 +25,16 @@ public class CreditAccount extends Account {
                     "Кредитная процентная ставка не может быть отрицательной, а у вас: " + rate
             );
         }
-        if (initialBalance <= 0) {
-            throw new IllegalArgumentException(
-                    "Начальны баланс не может быть отрицательным, а у вас: " + initialBalance
-            );
-        }
-        if (creditLimit <= 0) {
-            throw new IllegalArgumentException(
-                    "Максимальная сумма задолженности перед банком не может быть отрицательной, а у вас: " + creditLimit
-            );
-        }
+//        if (initialBalance < creditLimit) {
+//            throw new IllegalArgumentException(
+//                    "Баланс не может быть ниже допустимого кредитного лимита, а у вас: " + initialBalance
+//            );
+//        }
+//        if (creditLimit <= 0) {
+//            throw new IllegalArgumentException(
+//                    "Максимальная сумма задолженности перед банком не может быть отрицательной, а у вас: " + creditLimit
+//            );
+//        }
 
         this.balance = initialBalance;
         this.creditLimit = creditLimit;
@@ -98,15 +99,21 @@ public class CreditAccount extends Account {
      * @return
      */
     @Override
-    public int yearChange() {
+    public int yearChange(boolean isChangeInYear) {
         if (balance > 0) {
             return 0;
-        } else {
+        } else if (isChangeInYear) {
             return balance / 100 * rate;
+        }
+        return 0;
+    }
+
+
+        public int getCreditLimit () {
+            return creditLimit;
         }
     }
 
-    public int getCreditLimit() {
-        return creditLimit;
-    }
-}
+
+
+

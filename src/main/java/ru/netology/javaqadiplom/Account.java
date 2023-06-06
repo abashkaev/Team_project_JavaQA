@@ -1,6 +1,6 @@
 package ru.netology.javaqadiplom;
 
-public class Account {
+public abstract class Account {
     protected int balance;
     protected int rate;
 
@@ -12,7 +12,7 @@ public class Account {
         return false;
     }
 
-    public int yearChange() {
+    public int yearChange(boolean isChangeInYear){
         return 0;
     }
 
