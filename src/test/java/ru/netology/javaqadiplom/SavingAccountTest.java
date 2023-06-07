@@ -176,30 +176,15 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void shouldTestWhenBalanceNotChange() {// расчет % на остаток если счет не менялся
+    public void shouldTestWhenBalanceNotChange() {// расчет % на остаток
         SavingAccount savingAccount = new SavingAccount(
                 200,
                 200,
                 10_000,
                 15
         );
-        savingAccount.yearChange(false);
         int expected = 30;
-        int actual = savingAccount.yearChange(false);
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldTestWhenBalanceChange() { //расчет % на остаток если счет менялся
-        SavingAccount savingAccount = new SavingAccount(
-                3_000,
-                2_000,
-                10_000,
-                15
-        );
-        savingAccount.yearChange(true);
-        int expected = (0);
-        int actual = savingAccount.yearChange(true);
+        int actual = savingAccount.yearChange();
         Assertions.assertEquals(expected, actual);
     }
 }

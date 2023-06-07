@@ -119,13 +119,10 @@ public class SavingAccount extends Account {
      * @return
      */
     @Override
-    public int yearChange(boolean isChangeInYear) {
-        if (isChangeInYear) {
-            return 0;
-        } else {
+    public int yearChange() {
             return balance / 100 * rate;
         }
-    }
+
 
     public int getMinBalance() {
         return minBalance;
