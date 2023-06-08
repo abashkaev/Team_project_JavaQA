@@ -52,28 +52,28 @@ public class CreditAccountTest {
         Assertions.assertEquals(0, account.getBalance());
     }
 
-//    @Test
-//    public void creditPercent() {
-//        CreditAccount account = new CreditAccount(0, 5_000, 15);
-//
-//        account.pay(1000);
-//
-//        Assertions.assertEquals(-150, account.yearChange());
-//    }
-//
-//    @Test
-//    public void creditPercentIfPositiveBalance() {
-//        CreditAccount account = new CreditAccount(1000, 5_000, 15);
-//
-//        Assertions.assertEquals(0, account.yearChange());
-//    }
-//
-//    @Test
-//    public void creditPercentIfBalanceIsZero() {
-//        CreditAccount account = new CreditAccount(0, 5_000, 15);
-//
-//        Assertions.assertEquals(0, account.yearChange());
-//    }
+    @Test
+    public void creditPercent() {
+        CreditAccount account = new CreditAccount(0, 5_000, 15);
+
+        account.pay(1000);
+
+        Assertions.assertEquals(-150, account.yearChange());
+    }
+
+    @Test
+    public void creditPercentIfPositiveBalance() {
+        CreditAccount account = new CreditAccount(1000, 5_000, 15);
+
+        Assertions.assertEquals(0, account.yearChange());
+    }
+
+    @Test
+    public void creditPercentIfBalanceIsZero() {
+        CreditAccount account = new CreditAccount(0, 5_000, 15);
+
+        Assertions.assertEquals(0, account.yearChange());
+    }
 
     @Test
     public void createAccountWithRateIsZero() {
