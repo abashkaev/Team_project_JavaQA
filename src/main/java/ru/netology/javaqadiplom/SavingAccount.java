@@ -43,7 +43,7 @@ public class SavingAccount extends Account {
         }
         if (maxBalance < minBalance) {
             throw new IllegalArgumentException(
-                    "Некорректные данные, максимальный баланс(" + maxBalance + ") не может быть меньше минимального (" + minBalance + ")"
+                    "Некорректные данные, максимальный баланс("+ maxBalance +") не может быть меньше минимального (" + minBalance +")"
             );
         }
         if (initialBalance < minBalance) {
