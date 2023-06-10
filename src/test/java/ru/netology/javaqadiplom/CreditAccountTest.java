@@ -120,9 +120,10 @@ public class CreditAccountTest {
             CreditAccount account = new CreditAccount(10, -6000, 10);
         });
     }
+
     @Test
-    public void usePyaIfAmountMoreCreditLimit () {
-        CreditAccount account = new CreditAccount(10000,5000,10);
+    public void usePyaIfAmountMoreCreditLimit() {
+        CreditAccount account = new CreditAccount(10000, 5000, 10);
 
         account.pay(12000);
 
